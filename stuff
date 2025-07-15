@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Pokeclub is the ultimate online Pokémon fan club — explore, connect, and catch 'em all!" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+  <title>Pokeclub – The Pokémon Fan Club</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9ff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffcb05;
+      color: #2a75bb;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      color: #2a75bb;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding: 0.25rem 0;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #3b4cca;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    a.button:hover {
+      background: #2a75bb;
+    }
+
+    footer {
+      text-align: center;
+      background: #eee;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Pokeclub</h1>
+    <p>Unite with trainers around the world!</p>
+  </header>
+
+  <main>
+    <section class="about">
+      <h2>What is Pokeclub?</h2>
+      <p>Pokeclub is an online fan community where Pokémon lovers can meet, chat, and share their adventures. Whether you battle, collect, or draw, this is your home.</p>
+    </section>
+
+    <section class="features">
+      <h2>Club Features</h2>
+      <ul>
+        <li>💬 Forums & chatrooms</li>
+        <li>🎮 Trading and battle zones</li>
+        <li>🖌️ Fan art gallery</li>
+        <li>🧠 Weekly trivia & events</li>
+      </ul>
+    </section>
+
+    <section class="join">
+      <h2>Join the Club</h2>
+      <p>Membership is free. All trainers welcome — from Pallet Town to Paldea!</p>
+      <a href="https://yourdomain.com/join" class="button">Join Now</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Pokeclub. Not affiliated with Nintendo or Game Freak.</p>
+  </footer>
+</body>
+</html>
