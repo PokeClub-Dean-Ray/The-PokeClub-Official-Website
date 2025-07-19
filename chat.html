@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PokeClub Chatroom</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+    }
+    header {
+      background: #ffcb05;
+      color: #2a75bb;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    #chat {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 0.3rem 0;
+      padding: 0.5rem 1rem;
+      background: #e1f5fe;
+      border-radius: 10px;
+      max-width: 60%;
+      align-self: flex-start;
+    }
+    .my-message {
+      background: #c8e6c9;
+      align-self: flex-end;
+    }
+    form {
+      display: flex;
+      padding: 1rem;
+      background: #fff;
+      border-top: 2px solid #ccc;
+    }
+    input, button {
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    input {
+      flex: 1;
+      margin-right: 0.5rem;
+    }
+    button {
+      background-color: #3b4cca;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    #usernameOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #usernameOverlay input {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>PokeClub Chatroom</header>
+
+  <div id="chat"></div>
+
+  <form id="chat-form">
+    <input id="message" autocomplete="off" placeholder="Type your message..." />
+    <button type="submit">Send</button>
+  </form>
+
+  <div id="usernameOverlay">
+    <input id="usernameInput" placeholder="Enter your username..." />
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const chat = document.getElementById('chat');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('message');
+    const usernameOverlay = document.getElementById('usernameOverlay');
+    const usernameInput = document.getElementById('usernameInput');
+    let username = '';
+
+    usernameInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && usernameInput.value.trim() !== '') {
+        username = usernameInput.value.trim();
+        usernameOverlay.style.display = 'none';
+      }
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit('chat message', { user: username, text: input.value });
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function(msg) {
+      const item = document.createElement('div');
+      item.className = 'message';
+      if (msg.user === username) item.classList.add('my-message');
+      item.textContent = `${msg.user}: ${msg.text}`;
+      chat.appendChild(item);
+      chat.scrollTop = chat.scrollHeight;
+    });
+  </script>
+</body>
+</html>
